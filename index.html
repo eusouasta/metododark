@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz Interativo</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #0d0d0d, #1a1a1a);
+            color: #fff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .quiz-container {
+            width: 90%;
+            max-width: 500px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 16px;
+            padding: 20px;
+            text-align: center;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+        }
+
+        .quiz-header {
+            margin-bottom: 20px;
+        }
+
+        .quiz-header h1 {
+            font-size: 1.8rem;
+            color: #00e676;
+        }
+
+        .progress-bar {
+            width: 100%;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+            overflow: hidden;
+            margin-bottom: 20px;
+        }
+
+        .progress {
+            height: 10px;
+            background: #00e676;
+            width: 0;
+            transition: width 0.3s ease;
+        }
+
+        .question {
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+        }
+
+        .answers button {
+            width: 100%;
+            background: rgba(255, 255, 255, 0.1);
+            color: #fff;
+            border: 1px solid #00e676;
+            padding: 10px;
+            margin: 5px 0;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background 0.3s, transform 0.2s;
+        }
+
+        .answers button:hover {
+            background: #00e676;
+            color: #000;
+            transform: scale(1.02);
+        }
+
+        .final-screen {
+            display: none;
+        }
+
+        .final-screen h2 {
+            color: #00e676;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="quiz-container">
+        <div class="quiz-header">
+            <h1>Quiz Interativo</h1>
+            <div class="progress-bar">
+                <div class="progress" id="progress"></div>
+            </div>
+        </div>
+        <div class="quiz-body">
+            <div id="question-container">
+                <p class="question" id="question">Qual é sua primeira meta com canais dark?</p>
+                <div class="answers" id="answers">
+                    <button onclick="nextQuestion(1)">Ganhar dinheiro rápido</button>
+                    <button onclick="nextQuestion(2)">Criar um projeto de longo prazo</button>
+                    <button onclick="nextQuestion(3)">Aprender algo novo</button>
+                </div>
+            </div>
+            <div id="final-screen" class="final-screen">
+                <h2>Parabéns, você concluiu o quiz!</h2>
+                <p>Agora você está pronto para iniciar sua jornada com canais dark.</p>
+                <a href="#" class="button">Inscreva-se Agora</a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const questions = [
+            { question: "Qual é sua primeira meta com canais dark?", answers: ["Ganhar dinheiro rápido", "Criar um projeto de longo prazo", "Aprender algo novo"] },
+            { question: "Qual plataforma você gostaria de começar?", answers: ["YouTube", "TikTok", "Ambas"] },
+            { question: "Você já usou ferramentas de IA?", answers: ["Sim", "Não", "Tenho curiosidade"] },
+        ];
+
+        let currentQuestionIndex = 0;
+
+        function nextQuestion(selectedAnswer) {
+            currentQuestionIndex++;
+            const progress = document.getElementById('progress');
+            const questionContainer = document.getElementById('question-container');
+            const finalScreen = document.getElementById('final-screen');
+            
+            if (currentQuestionIndex < questions.length) {
+                // Update question and answers
+                const questionEl = document.getElementById('question');
+                const answersEl = document.getElementById('answers');
+                questionEl.innerText = questions[currentQuestionIndex].question;
+                answersEl.innerHTML = '';
+                questions[currentQuestionIndex].answers.forEach((answer, index) => {
+                    const button = document.createElement('button');
+                    button.innerText = answer;
+                    button.onclick = () => nextQuestion(index + 1);
+                    answersEl.appendChild(button);
+                });
+            } else {
+                // Show final screen
+                questionContainer.style.display = 'none';
+                finalScreen.style.display = 'block';
+            }
+
+            // Update progress bar
+            progress.style.width = `${(currentQuestionIndex / questions.length) * 100}%`;
+        }
+    </script>
+</body>
+</html>

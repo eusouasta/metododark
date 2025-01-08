@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -35,19 +35,9 @@
             color: #00e676;
         }
 
-        .progress-bar {
-            width: 100%;
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 8px;
-            overflow: hidden;
-            margin-bottom: 20px;
-        }
-
-        .progress {
-            height: 10px;
-            background: #00e676;
-            width: 0;
-            transition: width 0.3s ease;
+        .quiz-header img {
+            max-width: 100px;
+            margin-bottom: 10px;
         }
 
         .question {
@@ -73,77 +63,189 @@
             transform: scale(1.02);
         }
 
-        .final-screen {
-            display: none;
-        }
-
         .final-screen h2 {
             color: #00e676;
             margin-bottom: 10px;
+        }
+
+        .cta-button {
+            background: #00e676;
+            color: #000;
+            padding: 12px;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.2rem;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+            margin-top: 20px;
+        }
+
+        .cta-button:hover {
+            background: #1b5e20;
+        }
+
+        .highlight {
+            color: #ffeb3b;
+            font-weight: bold;
+        }
+
+        .offer-box {
+            border: 2px solid #00e676;
+            border-radius: 10px;
+            padding: 20px;
+            background: rgba(0, 0, 0, 0.8);
         }
     </style>
 </head>
 <body>
     <div class="quiz-container">
-        <div class="quiz-header">
-            <h1>Quiz Interativo</h1>
-            <div class="progress-bar">
-                <div class="progress" id="progress"></div>
-            </div>
-        </div>
-        <div class="quiz-body">
-            <div id="question-container">
-                <p class="question" id="question">Qual é sua primeira meta com canais dark?</p>
-                <div class="answers" id="answers">
-                    <button onclick="nextQuestion(1)">Ganhar dinheiro rápido</button>
-                    <button onclick="nextQuestion(2)">Criar um projeto de longo prazo</button>
-                    <button onclick="nextQuestion(3)">Aprender algo novo</button>
-                </div>
-            </div>
-            <div id="final-screen" class="final-screen">
-                <h2>Parabéns, você concluiu o quiz!</h2>
-                <p>Agora você está pronto para iniciar sua jornada com canais dark.</p>
-                <a href="#" class="button">Inscreva-se Agora</a>
-            </div>
+        <div id="quiz-content">
+            <!-- Páginas do quiz serão carregadas dinamicamente -->
         </div>
     </div>
 
     <script>
-        const questions = [
-            { question: "Qual é sua primeira meta com canais dark?", answers: ["Ganhar dinheiro rápido", "Criar um projeto de longo prazo", "Aprender algo novo"] },
-            { question: "Qual plataforma você gostaria de começar?", answers: ["YouTube", "TikTok", "Ambas"] },
-            { question: "Você já usou ferramentas de IA?", answers: ["Sim", "Não", "Tenho curiosidade"] },
+        const quizData = [
+            {
+                question: "Aprenda a utilizar INTELIGÊNCIA ARTIFICIAL e ganhe de 2 a 5mil por mês com vídeos simples!",
+                answers: [
+                    "Quero Aprender 💰"
+                ],
+                isIntro: true
+            },
+            {
+                question: "Vamos começar 🚀",
+                answers: [
+                    "Sou Homem 👨",
+                    "Sou Mulher 👩"
+                ]
+            },
+            {
+                question: "Você já utiliza IA para ganhar dinheiro?",
+                answers: [
+                    "Já tentei... 🤔",
+                    "Já utilizei mas pouco... 😅",
+                    "Ainda não fiz... 😬",
+                    "Faço sempre! 💪"
+                ]
+            },
+            {
+                question: "Você já fez algum treinamento?",
+                answers: [
+                    "Nunca fiz treinamento ❌",
+                    "Já fiz mas não tive resultado 😕"
+                ]
+            },
+            {
+                question: "Para entender melhor, qual seu faturamento atual?",
+                answers: [
+                    "Zero 💸",
+                    "Entre 1k e 5K 📈",
+                    "Entre 10k e 30K 💵",
+                    "Quero fazer dinheiro com IA 🤖"
+                ]
+            },
+            {
+                question: "Você já tentou canal ou perfil dark antes?",
+                answers: [
+                    "Sim já 🎯",
+                    "Nunca ❌",
+                    "Gostaria de tentar 🤔"
+                ]
+            },
+            {
+                question: "Me diz o que você ACHA que falta para você viver da internet?",
+                answers: [
+                    "A estratégia certa 📚",
+                    "Focar em perfis dark com IA 💡",
+                    "Não sei 🤷‍♂️"
+                ]
+            },
+            {
+                question: "Você já conhece o método de perfis dark?",
+                answers: [
+                    "Ainda não ❓",
+                    "Quero aprender ✅"
+                ]
+            },
+            {
+                presentation: true,
+                content: `
+                    <h2>Prazer, me chamo:</h2>
+                    <p><strong>Fernando Alves</strong></p>
+                    <p>Já criei diversos canais e monetizei no TikTok, Instagram e Shorts, utilizando tanto do Adsense quanto de vendas na internet.</p>
+                    <p>Tenho <strong>+ de 10 Milhões de visualizações</strong> em todas as plataformas com perfis dark e vou te ensinar o processo que me fez sair do ZERO para as milhares de views nos meus perfis!</p>
+                    <p>Já imaginou ganhar dinheiro utilizando apenas um programinha de edição simples e algumas IAs? É muito simples e sem esforço!</p>
+                `
+            },
+            {
+                question: "Você já percebeu como trabalhar na escala 6x1 pode ser cansativo enquanto um menino de 17 anos faz 5mil reais criando vídeos em menos de 10 minutos usando IA?",
+                answers: [
+                    "Sim, gostaria de fazer isso 👍",
+                    "É muito frustrante mesmo 👎"
+                ]
+            },
+            {
+                question: "Você quer aprender do ZERO e fazer dinheiro com IA?",
+                answers: [
+                    "SIM! QUERO 🚀"
+                ]
+            },
+            {
+                offer: true,
+                content: `
+                    <h2>Oferta Exclusiva</h2>
+                    <div class="offer-box">
+                        <p><span class="highlight">De R$ 97 por apenas R$ 47!</span> Por tempo limitado.</p>
+                        <p>Faça parte da nossa turma e aprenda como monetizar de todas as formas conteúdo com IA.</p>
+                        <p>Você vai aprender sobre TikTok, Reels e Shorts e como fazer dinheiro com edição nos primeiros 7 dias.</p>
+                        <p><strong>Bônus:</strong> Ensinarei você a levantar <strong>R$ 800</strong> em 1 semana!</p>
+                        <p><span class="highlight">Garantia de 7 dias</span> ou seu dinheiro de volta!</p>
+                    </div>
+                    <a href="https://pay.kirvano.com/5e026af3-60c0-40fa-bebe-365ce2786fa8" class="cta-button">Quero me inscrever agora!</a>
+                `
+            }
         ];
 
-        let currentQuestionIndex = 0;
+        let currentStep = 0;
 
-        function nextQuestion(selectedAnswer) {
-            currentQuestionIndex++;
-            const progress = document.getElementById('progress');
-            const questionContainer = document.getElementById('question-container');
-            const finalScreen = document.getElementById('final-screen');
-            
-            if (currentQuestionIndex < questions.length) {
-                // Update question and answers
-                const questionEl = document.getElementById('question');
-                const answersEl = document.getElementById('answers');
-                questionEl.innerText = questions[currentQuestionIndex].question;
-                answersEl.innerHTML = '';
-                questions[currentQuestionIndex].answers.forEach((answer, index) => {
-                    const button = document.createElement('button');
-                    button.innerText = answer;
-                    button.onclick = () => nextQuestion(index + 1);
-                    answersEl.appendChild(button);
-                });
+        function renderStep() {
+            const content = quizData[currentStep];
+            const quizContent = document.getElementById("quiz-content");
+
+            if (content.isIntro) {
+                quizContent.innerHTML = `
+                    <p class="question">${content.question}</p>
+                    <div class="answers">
+                        ${content.answers.map(answer => `<button onclick="nextStep()">${answer}</button>`).join('')}
+                    </div>
+                `;
+            } else if (content.presentation) {
+                quizContent.innerHTML = `
+                    ${content.content}
+                    <button class="cta-button" onclick="nextStep()">Quer aprender? 🚀</button>
+                `;
+            } else if (content.offer) {
+                quizContent.innerHTML = content.content;
             } else {
-                // Show final screen
-                questionContainer.style.display = 'none';
-                finalScreen.style.display = 'block';
+                quizContent.innerHTML = `
+                    <p class="question">${content.question}</p>
+                    <div class="answers">
+                        ${content.answers.map(answer => `<button onclick="nextStep()">${answer}</button>`).join('')}
+                    </div>
+                `;
             }
-
-            // Update progress bar
-            progress.style.width = `${(currentQuestionIndex / questions.length) * 100}%`;
         }
+
+        function nextStep() {
+            currentStep++;
+            if (currentStep < quizData.length) {
+                renderStep();
+            }
+        }
+
+        renderStep();
     </script>
 </body>
 </html>

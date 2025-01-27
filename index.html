@@ -1,252 +1,195 @@
 <!DOCTYPE html>
-<html lang="pt">
+<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Quiz Interativo</title>
-    <style>
-        body {
-            margin: 0;
-            font-family: 'Arial', sans-serif;
-            background: linear-gradient(135deg, #0d0d0d, #1a1a1a);
-            color: #fff;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-        }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Curso de Monetização TikTok</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background: linear-gradient(135deg, #121212, #1e1e1e);
+      color: white;
+      font-family: Arial, sans-serif;
+      text-align: center;
+    }
 
-        .quiz-container {
-            width: 90%;
-            max-width: 500px;
-            background: rgba(255, 255, 255, 0.05);
-            border-radius: 16px;
-            padding: 20px;
-            text-align: center;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
-        }
+    h1 {
+      color: #00ff00;
+      font-size: 2rem;
+      margin-bottom: 1rem;
+    }
 
-        .quiz-header {
-            margin-bottom: 20px;
-        }
+    h2 {
+      color: #00ff00;
+      margin-top: 1rem;
+      font-size: 1.5rem;
+    }
 
-        .quiz-header h1 {
-            font-size: 1.8rem;
-            color: #00e676;
-        }
+    p {
+      font-size: 1rem;
+      line-height: 1.6;
+      margin: 0.5rem 0;
+    }
 
-        .quiz-header img {
-            max-width: 100px;
-            margin-bottom: 10px;
-        }
+    .block {
+      background: #1a1a1a;
+      border-radius: 15px;
+      padding: 1.5rem;
+      margin: 1rem 0;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+    }
 
-        .question {
-            font-size: 1.2rem;
-            margin-bottom: 20px;
-        }
+    .cta-button {
+      background: #00ff00;
+      color: #121212;
+      padding: 0.8rem 2rem;
+      border: none;
+      border-radius: 50px;
+      font-size: 1.2rem;
+      font-weight: bold;
+      cursor: pointer;
+      text-transform: uppercase;
+      animation: pulse 1.5s infinite;
+      box-shadow: 0 4px 10px rgba(0, 255, 0, 0.5);
+    }
 
-        .answers button {
-            width: 100%;
-            background: rgba(255, 255, 255, 0.1);
-            color: #fff;
-            border: 1px solid #00e676;
-            padding: 15px; /* Aumentei o padding para melhorar a usabilidade */
-            margin: 5px 0;
-            border-radius: 8px;
-            cursor: pointer;
-            transition: background 0.3s, transform 0.2s;
-            font-size: 1.3rem; /* Aumentei o tamanho da fonte */
-        }
+    .cta-button:hover {
+      background: #00e600;
+    }
 
-        .answers button:hover {
-            background: #00e676;
-            color: #000;
-            transform: scale(1.02);
-        }
+    @keyframes pulse {
+      0%, 100% {
+        transform: scale(1);
+      }
+      50% {
+        transform: scale(1.1);
+      }
+    }
 
-        .final-screen h2 {
-            color: #00e676;
-            margin-bottom: 10px;
-        }
+    .results {
+      margin: 2rem 0;
+    }
 
-        .cta-button {
-            background: #00e676;
-            color: #000;
-            padding: 12px;
-            border: none;
-            border-radius: 8px;
-            font-size: 1.2rem;
-            cursor: pointer;
-            text-decoration: none;
-            display: inline-block;
-            margin-top: 20px;
-        }
+    .result-block {
+      display: inline-block;
+      width: 90%;
+      max-width: 300px;
+      margin: 1rem;
+      background: #1a1a1a;
+      border-radius: 15px;
+      padding: 1rem;
+      text-align: center;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+    }
 
-        .cta-button:hover {
-            background: #1b5e20;
-        }
+    .result-block img {
+      width: 100%;
+      border-radius: 10px;
+    }
 
-        .highlight {
-            color: #ffeb3b;
-            font-weight: bold;
-        }
+    .faq {
+      text-align: left;
+      margin: 2rem auto;
+      width: 90%;
+      max-width: 800px;
+    }
 
-        .offer-box {
-            border: 2px solid #00e676;
-            border-radius: 10px;
-            padding: 20px;
-            background: rgba(0, 0, 0, 0.8);
-        }
-    </style>
+    .faq h2 {
+      text-align: center;
+    }
+
+    .faq-item {
+      margin: 1rem 0;
+    }
+
+    .faq-item h3 {
+      color: #00ff00;
+      margin-bottom: 0.5rem;
+      font-size: 1.2rem;
+    }
+
+    footer {
+      margin-top: 2rem;
+      padding: 1rem 0;
+      background: #000;
+      color: white;
+      font-size: 0.9rem;
+    }
+  </style>
 </head>
 <body>
-    <div class="quiz-container">
-        <div id="quiz-content">
-            <!-- Páginas do quiz serão carregadas dinamicamente -->
-        </div>
+  <div>
+    <h1>Monetize no TikTok em 7 Dias ou Menos</h1>
+    <p>Aprenda a transformar o seu celular em uma máquina de dinheiro usando IA e estratégias simples.</p>
+
+    <div class="block">
+      <h2>O Que Você Vai Aprender:</h2>
+      <ul style="list-style: none; padding: 0;">
+        <li>✅ Como atingir <b>100K de views</b> rapidamente.</li>
+        <li>✅ Estratégias para <b>10K de inscritos</b> em tempo recorde.</li>
+        <li>✅ Use IA + CapCut para vídeos virais.</li>
+        <li>✅ Venda contas monetizadas e lucre rápido.</li>
+      </ul>
     </div>
 
-    <script>
-        const quizData = [
-            {
-                question: "Aprenda a utilizar INTELIGÊNCIA ARTIFICIAL e ganhe de 2 a 5mil por mês com vídeos simples!",
-                answers: [
-                    "Quero Aprender 💰"
-                ],
-                isIntro: true
-            },
-            {
-                question: "Vamos começar 🚀",
-                answers: [
-                    "Sou Homem 👨",
-                    "Sou Mulher 👩"
-                ]
-            },
-            {
-                question: "Você já utiliza IA para ganhar dinheiro?",
-                answers: [
-                    "Já tentei... 🤔",
-                    "Já utilizei mas pouco... 😅",
-                    "Ainda não fiz... 😬",
-                    "Faço sempre! 💪"
-                ]
-            },
-            {
-                question: "Você já fez algum treinamento?",
-                answers: [
-                    "Nunca fiz treinamento ❌",
-                    "Já fiz mas não tive resultado 😕"
-                ]
-            },
-            {
-                question: "Para entender melhor, qual seu faturamento atual?",
-                answers: [
-                    "Zero 💸",
-                    "Entre 1k e 5K 📈",
-                    "Entre 10k e 30K 💵",
-                    "Quero fazer dinheiro com IA 🤖"
-                ]
-            },
-            {
-                question: "Você já tentou canal ou perfil dark antes?",
-                answers: [
-                    "Sim já 🎯",
-                    "Nunca ❌",
-                    "Gostaria de tentar 🤔"
-                ]
-            },
-            {
-                question: "Me diz o que você ACHA que falta para você viver da internet?",
-                answers: [
-                    "A estratégia certa 📚",
-                    "Focar em perfis dark com IA 💡",
-                    "Não sei 🤷‍♂️"
-                ]
-            },
-            {
-                question: "Você já conhece o método de perfis dark?",
-                answers: [
-                    "Ainda não ❓",
-                    "Quero aprender ✅"
-                ]
-            },
-            {
-                presentation: true,
-                content: `
-                    <h2>Prazer, me chamo:</h2>
-                    <p><strong>Fernando Alves</strong></p>
-                    <p>Já criei diversos canais e monetizei no TikTok, Instagram e Shorts, utilizando tanto do Adsense quanto de vendas na internet.</p>
-                    <p>Tenho <strong>+ de 10 Milhões de visualizações</strong> em todas as plataformas com perfis dark e vou te ensinar o processo que me fez sair do ZERO para as milhares de views nos meus perfis!</p>
-                    <p>Já imaginou ganhar dinheiro utilizando apenas um programinha de edição simples e algumas IAs? É muito simples e sem esforço!</p>
-                `
-            },
-            {
-                question: "Você já percebeu como trabalhar na escala 6x1 pode ser cansativo enquanto um menino de 17 anos faz 5mil reais criando vídeos em menos de 10 minutos usando IA?",
-                answers: [
-                    "Sim, gostaria de fazer isso 👍",
-                    "É muito frustrante mesmo 👎"
-                ]
-            },
-            {
-                question: "Você quer aprender do ZERO e fazer dinheiro com IA?",
-                answers: [
-                    "SIM! QUERO 🚀"
-                ]
-            },
-            {
-                offer: true,
-                content: `
-                    <h2>Oferta Exclusiva</h2>
-                    <div class="offer-box">
-                        <p><span class="highlight">De R$ 97 por apenas R$ 47!</span> Por tempo limitado.</p>
-                        <p>Faça parte da nossa turma e aprenda como monetizar de todas as formas conteúdo com IA.</p>
-                        <p>Você vai aprender sobre TikTok, Reels e Shorts e como fazer dinheiro com edição nos primeiros 7 dias.</p>
-                        <p><strong>Bônus:</strong> Ensinarei você a levantar <strong>R$ 800</strong> em 1 semana!</p>
-                        <p><span class="highlight">Garantia de 7 dias</span> ou seu dinheiro de volta!</p>
-                    </div>
-                    <a href="https://pay.kirvano.com/5e026af3-60c0-40fa-bebe-365ce2786fa8" class="cta-button">Quero me inscrever agora!</a>
-                `
-            }
-        ];
+    <div class="block">
+      <h2>Bônus Exclusivos:</h2>
+      <p class="bonus">🔥 Templates prontos no CapCut.</p>
+      <p class="bonus">🔥 Lista de nichos mais lucrativos.</p>
+      <p class="bonus">🔥 Acesso ao grupo VIP no WhatsApp.</p>
+    </div>
 
-        let currentStep = 0;
+    <!-- Botão que rola para baixo -->
+    <button class="cta-button" onclick="document.getElementById('final-cta').scrollIntoView({ behavior: 'smooth' });">
+      Quero Começar Agora 🚀
+    </button>
 
-        function renderStep() {
-            const content = quizData[currentStep];
-            const quizContent = document.getElementById("quiz-content");
+    <!-- Resultados -->
+    <div class="results">
+      <h2>Veja os Resultados Reais:</h2>
+      <div class="result-block">
+        <img src="https://i.imgur.com/L1AfYdk.png" alt="Resultado 1">
+        <p>Conta viral com 100K views em 3 dias!</p>
+      </div>
+      <div class="result-block">
+        <img src="https://i.imgur.com/TaeQOUZ.png" alt="Resultado 2">
+        <p>Inscritos batendo 10K rapidamente.</p>
+      </div>
+      <div class="result-block">
+        <img src="https://i.imgur.com/3fvI4Lp.png" alt="Resultado 3">
+        <p>Conta monetizada vendida por R$1.500!</p>
+      </div>
+    </div>
 
-            if (content.isIntro) {
-                quizContent.innerHTML = `
-                    <p class="question">${content.question}</p>
-                    <div class="answers">
-                        ${content.answers.map(answer => `<button onclick="nextStep()">${answer}</button>`).join('')}
-                    </div>
-                `;
-            } else if (content.presentation) {
-                quizContent.innerHTML = `
-                    ${content.content}
-                    <button class="cta-button" onclick="nextStep()">Quer aprender? 🚀</button>
-                `;
-            } else if (content.offer) {
-                quizContent.innerHTML = content.content;
-            } else {
-                quizContent.innerHTML = `
-                    <p class="question">${content.question}</p>
-                    <div class="answers">
-                        ${content.answers.map(answer => `<button onclick="nextStep()">${answer}</button>`).join('')}
-                    </div>
-                `;
-            }
-        }
+    <!-- Botão de compra final -->
+    <div id="final-cta">
+      <button class="cta-button" onclick="window.location.href='https://pay.kirvano.com/8e81b359-bb73-41e5-91a4-347398950fb4'">
+        Garanta Sua Vaga Agora! 🔥
+      </button>
+    </div>
 
-        function nextStep() {
-            currentStep++;
-            if (currentStep < quizData.length) {
-                renderStep();
-            }
-        }
+    <!-- FAQ -->
+    <div class="faq">
+      <h2>Perguntas Frequentes</h2>
+      <div class="faq-item">
+        <h3>❓ Preciso ter experiência prévia?</h3>
+        <p>Não! O curso foi feito para quem está começando do zero.</p>
+      </div>
+      <div class="faq-item">
+        <h3>❓ Consigo fazer tudo pelo celular?</h3>
+        <p>Sim! Todo o processo pode ser feito usando apenas o celular.</p>
+      </div>
+      <div class="faq-item">
+        <h3>❓ Quanto tempo demora para ter resultados?</h3>
+        <p>Se seguir o passo a passo, você pode ver resultados em menos de 7 dias!</p>
+      </div>
+    </div>
 
-        renderStep();
-    </script>
+    <!-- Footer -->
+    <footer>
+      Copyright © 2025 Fernando. Todos os direitos reservados.
+    </footer>
+  </div>
 </body>
 </html>
